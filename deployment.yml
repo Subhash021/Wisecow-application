@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: wisecow-app
-        image: <registry>/<username>/wisecow-app:latest
+        image: <registry>/<username>/wisecow-app:latest //dockerhub image name Subhash021
         ports:
         - containerPort: 3000
 ---
@@ -33,4 +33,4 @@ spec:
   tls:
     - secretName: tls-secret
       hosts:
-        - your.domain.com
+        - wisecow.portal.com
