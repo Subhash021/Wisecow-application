@@ -1,0 +1,44 @@
+import psutil
+
+# Thresholds
+CPU_THRESHOLD = 80.0  # percentage
+MEMORY_THRESHOLD = 80.0  # percentage
+DISK_THRESHOLD = 90.0   # percentage
+
+# Function to send alert
+def send_alert(message):
+    print(f"ALERT: {message}")
+    # You can customize this function to send alerts via email, SMS, etc.
+
+# Check CPU usage
+def check_cpu_usage():
+    cpu_usage = psutil.cpu_percent(interval=1)
+    if cpu_usage > CPU_THRESHOLD:
+        send_alert(f"CPU usage is high: {cpu_usage}%")
+
+# Check memory usage
+def check_memory_usage():
+    memory_usage = psutil.virtual_memory().percent
+    if memory_usage > MEMORY_THRESHOLD:
+        send_alert(f"Memory usage is high: {memory_usage}%")
+
+# Check disk usage
+def check_disk_usage():
+    disk_usage = psutil.disk_usage('/').percent
+    if disk_usage > DISK_THRESHOLD:
+        send_alert(f"Disk usage is high: {disk_usage}%")
+
+# Check for specific running processes (example: MySQL)
+def check_running_processes():
+    if 'mysql' in (p.name() for p in psutil.process_iter()):
+        send_alert("MySQL is running")
+
+# Main function to run checks
+def main():
+    check_cpu_usage()
+    check_memory_usage()
+    check_disk_usage()
+    check_running_processes()
+
+if __name__ == "__main__":
+    main()
