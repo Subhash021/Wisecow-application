@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: wisecow-app
-        image: <registry>/<username>/wisecow-app:latest //dockerhub image name subhash021
+        image: <registry>/<username>/wisecow-app:latest //dockerhub image name 'subhash021'
         ports:
         - containerPort: 3000
 ---
