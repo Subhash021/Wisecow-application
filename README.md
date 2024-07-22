@@ -1,0 +1,2 @@
+# Wisecow-application
+Devopspractice
